@@ -5,7 +5,10 @@ ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
-gem 'bcrypt', '~> 3.1.7' 
+gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap-style'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
