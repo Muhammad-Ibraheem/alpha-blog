@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= link_to "Alpha blog", root_path, class: "navbar-brand", id: "logo" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,22 +7,53 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <li><%= link_to 'Log out', logout_path, method: :delete %></li>
         <%= link_to "Articles", articles_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Users", users_path, class: 'nav-link' %>
+          </li>
+<% if logged_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Actions
         </a>
+
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <%= link_to "New Article", new_article_path, class:"dropdown-item" %>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
+
+<% end %>
+
       </li>
+
+      <% if logged_in? %>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <%= link_to "Your profile", user_path(current_user), class:"nav-link" %>
       </li>
+
+      <li class="nav-item">
+        <%= link_to "Edit your profile", edit_user_path(current_user), class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "View your profile", user_path(current_user), class:"nav-link" %>
+      </li>
+
+
+      <li class="nav-item">
+        <%= link_to "Log out", logout_path, class: 'nav-link', method: :delete %>
+        </li>
+         <% else %>
+         <%= link_to "Log in", login_path, class: 'nav-link' %>
+         <%= link_to "Sign up", signup_path, class: 'nav-link' %>
+         <% end %>
+
+
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
