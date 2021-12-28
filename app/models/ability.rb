@@ -6,7 +6,7 @@ class Ability
         can :manage, :all
       else
         can :manage, Article if user.has_role?(:author, Article)
-        can :read, :Article
+        can :read, :all
 
       end
   end
