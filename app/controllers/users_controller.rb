@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: %i[edit update show]
   before_action :require_same_user, only: %i[edit update destroy]
-  before_action :require_admin, only: [:destroy]
+
   def index
     @users = User.paginate(page: params[:page], per_page: 3)
   end
@@ -59,13 +60,6 @@ class UsersController < ApplicationController
   def require_same_user
     if (current_user != @user) && !current_user.admin?
       flash[:danger] = 'you can only edit your own account'
-      redirect_to root_path
-    end
-  end
-
-  def require_admin
-    if logged_in? && !current_user.admin?
-      flash[:danger] = 'Only admin users can perform that action'
       redirect_to root_path
     end
   end

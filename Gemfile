@@ -26,7 +26,7 @@ gem 'rexml', '~> 3.2.5'
 # use to define roles
 gem 'rolify', '~> 6.0'
 # define permissions
-gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'cancancan', '~> 3.3'
 # fixes indentation
 gem 'rubocop', '~> 1.24', require: false
 

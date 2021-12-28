@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_article, only: %i[edit update show destroy]
   before_action :require_user?, except: %i[index show]
   before_action :require_same_user, only: %i[edit update destroy]

@@ -7,9 +7,8 @@ class Ability
     if user.has_role?(:admin)
       can :manage, :all
     else
-      can :manage, Article if user.has_role?(:author, Article)
-      can :read, :all
-
+      can %i[read write delete], Article if user.has_role?(:author, Article)
+      can :read, Article if user.has_role?(:reader, Article)
     end
   end
 end
