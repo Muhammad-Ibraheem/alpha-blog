@@ -8,7 +8,6 @@ ruby '3.0.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
-gem 'pry', '~> 0.14.1'
 gem 'rails', '~> 6.1.4'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap-style'
@@ -30,6 +29,8 @@ gem 'rolify', '~> 6.0'
 gem 'cancancan', '~> 3.3'
 # fixes indentation
 gem 'rubocop', '~> 1.24', require: false
+# debugger gem
+gem 'pry', '~> 0.14.1'
 
 gem 'rails-controller-testing'
 # Use Redis adapter to run Action Cable in production
