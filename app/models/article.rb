@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
-  resourcify
+  rolify
   belongs_to :user
   has_many :article_categories
   has_many :categories, through: :article_categories

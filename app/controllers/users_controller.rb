@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource only: %i[edit update destro]
   before_action :set_user, only: %i[edit update show]
   before_action :require_same_user, only: %i[edit update destroy]
 
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.add_role params[:user][:role]
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Welcome to the Alpha Blog #{@user.username}"
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by(id: session[:id])
     @user.destroy
     flash[:danger] = 'User and all articles created by user have been deleted'
     redirect_to users_path
