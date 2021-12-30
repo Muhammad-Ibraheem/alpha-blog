@@ -5,8 +5,12 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :manage, :all if user.has_role?(:admin)
-    can %i[read create delete], Article if user.has_role?(:author, Article)
-    can :read, Article if user.has_role?(:reader, Article)
+    if user.has_role?(:admin)
+      can :manage, :all
+    elsif user.has_role?(:author)
+      can :manage, Article, user_id: user.id
+    elsif user.has_role?(:reader)
+      can :read, Article
+    end
   end
 end

@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
+  before_action :article_params, only: [:create]
   load_and_authorize_resource only: %i[edit update destroy create]
 
   def index
@@ -16,7 +17,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = current_user
+    @article.user_id = current_user.id
     if @article.save
       flash[:success] = 'article was successfully created'
       redirect_to article_path(@article)
