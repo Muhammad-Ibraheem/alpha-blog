@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_article, only: %i[edit update show destroy]
-  before_action :require_user?, except: %i[index show]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action :set_article, only: [:show]
+  load_and_authorize_resource only: %i[edit update destroy create]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)

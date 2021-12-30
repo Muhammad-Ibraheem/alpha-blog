@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  load_and_authorize_resource only: %i[edit update destro]
-  before_action :set_user, only: %i[edit update show]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action :set_user, only: [:show]
+  load_and_authorize_resource only: %i[edit update destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 3)

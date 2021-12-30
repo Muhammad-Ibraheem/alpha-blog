@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :require_admin, except: %i[index show]
+  load_and_authorize_resource admin: %i[edit update destroy create new]
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 5)

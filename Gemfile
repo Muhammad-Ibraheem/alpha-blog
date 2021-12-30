@@ -27,10 +27,6 @@ gem 'rexml', '~> 3.2.5'
 gem 'rolify', '~> 6.0'
 # define permissions
 gem 'cancancan', '~> 3.3'
-# fixes indentation
-gem 'rubocop', '~> 1.24', require: false
-# debugger gem
-gem 'pry', '~> 0.14.1'
 
 gem 'rails-controller-testing'
 # Use Redis adapter to run Action Cable in production
@@ -47,6 +43,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # fixes indentation
+  gem 'rubocop', '~> 1.24', require: false
+  # debugger gem
+  gem 'pry', '~> 0.14.1'
 end
 
 group :development do

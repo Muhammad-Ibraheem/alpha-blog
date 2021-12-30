@@ -2,7 +2,7 @@
     <%= form_for(@user, :html => {class: "form-horizontal", role: "form"})  do |f| %>
 
   <div class="form-group">
-    <%= f.select(:role, [['reader', 'reader'], ['author', 'author'], ['Admin', 'admin']]) %>
+    <%= f.select(:role, [['reader', 'reader'], ['author', 'author']]) %>
   </div>
 
     <div class="form-group">
